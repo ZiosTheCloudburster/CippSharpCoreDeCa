@@ -119,7 +119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2288777684809461995}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.98099256
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -299,7 +299,6 @@ GameObject:
   - component: {fileID: 2288777685616739147}
   - component: {fileID: 2288777685616739148}
   - component: {fileID: 2288777685616739149}
-  - component: {fileID: 2288777685616739150}
   - component: {fileID: 1540680237468168915}
   m_Layer: 5
   m_Name: DebugCanvas
@@ -388,19 +387,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &2288777685616739150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2288777685616739151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db982d8432124c498ec980660bc51850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  safePanel: {fileID: 2288777686083854444}
 --- !u!114 &1540680237468168915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,7 +407,7 @@ MonoBehaviour:
     warnings: 1
     logs: 1
     exceptions: 1
-  logPrefab: {fileID: 5391534466747905380, guid: f0d6a104eaf186845af0b6f2988f1aa1,
+  logPrefab: {fileID: 5391534466747905380, guid: f0eb220496517d54d9c06f3a26ac3533,
     type: 3}
   logTextChildName: LogText
   stackTraceTextChildName: StackText
@@ -511,7 +497,6 @@ GameObject:
   - component: {fileID: 2288777685939615171}
   - component: {fileID: 2288777685939615168}
   - component: {fileID: 2288777685939615169}
-  - component: {fileID: 2288777685939615170}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -577,25 +562,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &2288777685939615170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2288777685939615172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58cb941408875bc4e803d9f15fbbf8a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowInEditMode: 1
-  offset: {x: 0, y: 20}
-  target: {fileID: 2288777686262708989}
-  rectTransform: {fileID: 0}
-  sizeDelta: {x: 0, y: 0}
-  targetSizeDelta: {x: 0, y: 0}
-  final: {x: 0, y: 0}
 --- !u!1 &2288777685989161283
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,7 +755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.00012207031}
+  m_AnchoredPosition: {x: -0.000061035156, y: -0.000034332275}
   m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2288777686334351058

@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -35,15 +36,20 @@ namespace CippSharp.Core.DeCa
 		public float logLifetime = 5f;
 		
 		[Header("Settings:")]
+		[Tooltip("Setup which kind of logs are enabled.")]
 		[SerializeField] private Settings settings = new Settings();
 		[SerializeField] private GameObject logPrefab = null;
 		
 		//NotEditableInPlay
+		[Space(5)]
+		[Tooltip("The name of the child GameObject of LogPrefab that holds the text for logs.")]
 		[SerializeField] private string logTextChildName = "LogText";
 		//NotEditableInPlay
+		[Tooltip("The name of the child GameObject of LogPrefab that holds the text for stackTrace.")]
 		[SerializeField] private string stackTraceTextChildName = "StackText";
 		
 		[Header("References:")] 
+		[Tooltip("Where logs are instanced.")]
 		[SerializeField] private RectTransform logsParent = null;
 		
 		private List<string> completeLogs = new List<string>();
@@ -207,6 +213,57 @@ namespace CippSharp.Core.DeCa
 			return list == null || list.Count < 1;
 		}
 		
+		#endregion
+		
+		#region Custom Editor
+#if UNITY_EDITOR
+		[CustomEditor(typeof(DebugCanvas))]
+		private class DebugCanvasEditor : Editor
+		{
+			private const string ScriptSerializedPropertyName = "m_Script";
+			
+			public override void OnInspectorGUI()
+			{
+				DrawInspector(serializedObject, DrawPropertyDelegate);
+			}
+
+			/// <summary>
+			/// Foreach element (<see cref="SerializedProperty"/>) found in the <param name="serializedObject"></param> iterator,
+			/// this will invoke a callback where you can override the draw of each or of some properties.
+			/// </summary>
+			/// <param name="serializedObject"></param>
+			/// <param name="drawPropertyDelegate"></param>
+			/// <returns></returns>
+			private static void DrawInspector(SerializedObject serializedObject, Action<SerializedProperty> drawPropertyDelegate)
+			{
+				serializedObject.UpdateIfRequiredOrScript();
+				SerializedProperty iterator = serializedObject.GetIterator();
+				for (bool enterChildren = true; iterator.NextVisible(enterChildren); enterChildren = false)
+				{
+					using (new EditorGUI.DisabledScope(ScriptSerializedPropertyName == iterator.propertyPath))
+					{
+						drawPropertyDelegate.Invoke(iterator.Copy());
+					}
+				}
+				serializedObject.ApplyModifiedProperties();
+			}
+			
+			private void DrawPropertyDelegate(SerializedProperty property)
+			{
+				if (property.name == nameof(logTextChildName) || property.name == nameof(stackTraceTextChildName))
+				{
+					bool guiStatus = GUI.enabled;
+					GUI.enabled = !Application.isPlaying;
+					EditorGUILayout.PropertyField(property, property.isExpanded && property.hasChildren);
+					GUI.enabled = guiStatus;
+				}
+				else
+				{
+					EditorGUILayout.PropertyField(property, property.isExpanded && property.hasChildren);
+				}
+			}
+		}
+#endif
 		#endregion
 	
 	}
