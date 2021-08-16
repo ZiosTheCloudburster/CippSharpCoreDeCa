@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 namespace CippSharp.Core.DeCa
 {
-	[ExecuteInEditMode]
 	[RequireComponent(typeof(Text))]
 	public class FPSDisplay : MonoBehaviour
 	{
