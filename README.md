@@ -1,4 +1,4 @@
-### CippSharpCore-DebugCanvas
+# CippSharpCore-DebugCanvas
 A useful canvas where logs will be printed during runtime.
 
 ### Content:
