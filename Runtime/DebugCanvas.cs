@@ -218,7 +218,7 @@ namespace CippSharp.Core.DeCa
 		#endregion
 		
 		#region Custom Editor
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
 		[CustomEditor(typeof(DebugCanvas))]
 		private class DebugCanvasEditor : Editor
 		{
