@@ -3,7 +3,7 @@
     using Color = UnityEngine.Color;
     using ColorUtility = UnityEngine.ColorUtility;
 
-    public static class RichTextUtils
+    internal static class RichTextUtils
     {
         /// <summary>
         /// Set the string to that color.

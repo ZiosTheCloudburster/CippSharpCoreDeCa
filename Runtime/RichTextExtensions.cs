@@ -1,8 +1,9 @@
-﻿using UnityEngine;
-
+﻿
 namespace CippSharp.Core.DeCa
 {
-    public static class RichTextExtensions
+    using Color = UnityEngine.Color;
+    
+    internal static class RichTextExtensions
     {
         /// <summary>
         /// Set the string to that color.

@@ -15,9 +15,9 @@ namespace CippSharp.Core.DeCa
 
 		//Runtime
 		private float deltaTime = 0.0f;
-		private float msec;
-		private float fps;
-		private string text;
+		private float msec = 0;
+		private float fps = 0;
+		private string text = string.Empty;
 
 		private void Awake()
 		{
@@ -29,7 +29,7 @@ namespace CippSharp.Core.DeCa
 			deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
 			msec = deltaTime * 1000.0f;
 			fps = 1.0f / deltaTime;
-			text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+			text = $"{msec:0.0} ms ({fps:0.} fps)";
 			fpsText.text = text;
 		}
 	}
